@@ -18,13 +18,13 @@ Test set: 78,614 reviews (20% stratified hold-out).
 | LR + Unigram counts | 0.915 | 0.881 | 0.803 | 0.607 | 0.691 |
 | LR + averaged Word2Vec | 0.89 | 0.86 | 0.75 | 0.51 | 0.61 |
 
-![ROC and precision-recall curves](images/roc_pr_curves.png)
+![ROC and precision-recall curves](roc_pr_curves.png)
 
 About 78% of the reviews are positive, so the negative class is the hard one. Raising the decision threshold from 0.5 to **0.63** raises negative-class recall from 0.65 to 0.74 and F1 from 0.732 to 0.750, with almost no change in accuracy.
 
 ### What the model learned
 
-![Top logistic regression coefficients](images/lr_coefficients.png)
+![Top logistic regression coefficients](lr_coefficients.png)
 
 * Bigrams capture negation: *"not bad"*, *"not disappoint"* and *"not bitter"* are strong **positive** signals, while *"not good"*, *"not worth"* and *"not great"* are negative. This works because negations are **kept** when stop words are removed (NLTK's default list would drop them).
 * Strongest positive stems: *best, great, excel(lent), perfect, fantast(ic), delici(ous)*. Strongest negative: *worst, horribl(e), terribl(e), disappoint, aw(ful), stale*.
@@ -48,7 +48,7 @@ The full analysis is in [`amazon_review_solution.ipynb`](amazon_review_solution.
 ├── preprocess.py                  # text cleaning shared by training and inference
 ├── predict.py                     # command-line inference with the saved model
 ├── sentiment_model.joblib         # trained TF-IDF + Logistic Regression pipeline
-├── images/                        # figures used in this README
+├── *.png                          # figures used in this README
 └── requirements.txt
 ```
 
